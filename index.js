@@ -10,7 +10,12 @@ var server = http.createServer(function(req,res){
     res.setHeader('content-type','text/html;charset="utf-8"')
     var string = fs.readFileSync('./sample/test.html', 'utf-8')
     res.end(string)
-  }else{
+  }else if(path === '/'){
+    res.setHeader('content-type','text/html;charset="utf-8"')
+    var string = fs.readFileSync('./index.html', 'utf-8')
+    res.end(string)
+  }
+  else{
     res.statusCode = 404
     res.setHeader('Content-Type','text/html')
     var notFoundFile = fs.readFileSync('./404.html', 'utf-8')
